@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operation</title>
+</head>
+
+<body>
+    <h1>CRUD Operation</h1>
+    <%= message %>
+        create
+        <% if (edit_id) { %>
+            <form action="/store_value" method="post">
+                <label for="title">ID : </label>
+                <input type="text" name="title" id="title">
+                <label for="author">Email : </label>
+                <input type="text" name="author" id="author">
+                <button type="submit">Submit</button>
+            </form>
+            edit
+            <%= message %>
+                <% } else { %>
+                    <form action="/store_value_edit/<%= edit_id %>" method="post">
+                        <label for="title">ID : </label>
+                        <input type="text" name="title" id="title" value="<%= edit_book %>">
+                        <label for="author">Email : </label>
+                        <inpedit_idut type="text" name="author" id="author" value="<%= edit_book %>">
+                        <button type="submit">Edit</button>
+                    </form>
+                    <% } %>
+                        <ul>
+                            <% for (let book of books) { %>
+                                <li>
+                                    <%= book.title %> - <%= book.author %> <a href="<%= book._id %>">edit</a>
+                                </li>
+                                <% } %>
+                        </ul>
+</body>
+
+</html>
